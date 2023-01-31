@@ -14,8 +14,11 @@ export class Course {
     get cell() {
         return (
             <td>
-                <p>{this.name}</p>
-                <p>{this.location}</p>
+                <p>
+                    {this.name}
+                    <br />
+                    {this.location}
+                </p>
             </td>
         );
     }
