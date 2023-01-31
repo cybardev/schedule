@@ -12,6 +12,8 @@
 /build
 
 # misc
+main
+main.pub
 nohup.out
 .DS_Store
 .env.local
