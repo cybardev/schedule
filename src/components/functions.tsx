@@ -1,6 +1,5 @@
 import { classData } from "./Data";
 
-// TODO: find sorted time slots (rows of table)
 export function getTimeSlots() {
     let timeSlots: string[] = [];
     classData.forEach((el) => {

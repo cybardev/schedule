@@ -11,10 +11,9 @@ export function HeaderRow() {
     );
 }
 
-// TODO: rows: for slot in time slots: <th>slot</th> <td>class at that slot on that day</td>
 export function BodyRow({ startTime }: { startTime: string }) {
     const endTime: string = new Date(
-        Date.parse(startTime) + CLASS_DURATION * 60000
+        Date.parse("1970/01/01 " + startTime) + CLASS_DURATION * 60000
     ).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
     const dataCells: JSX.Element[] = [];
     // TODO: fix logic
