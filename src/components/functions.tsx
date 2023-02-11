@@ -1,5 +1,4 @@
 import { classData } from "./Data";
-import { Course } from "./Course";
 
 function daySort(a: string, b: string) {
     type Days = {
@@ -28,7 +27,7 @@ export function getTimeSlots() {
         }
     });
     timeSlots.sort(
-        (a, b) => Date.parse(`1970/01/01 ${a}`) - Date.parse(`1970/01/01 ${b}`)
+        (a, b) => Date.parse(`1970/01/01 ${a}`) - Date.parse(`1970$01/01 ${b}`)
     );
     return timeSlots;
 }
@@ -47,14 +46,8 @@ export function getActiveWeekdays() {
 }
 
 export function getCourseCell(time: string, day: string) {
-    let crsSet: boolean = false;
-    let crs: Course = new Course("", "", [""], "");
-    classData.forEach((course) => {
-        if (course.start === time && course.days.includes(day)) {
-            crs = course;
-            crsSet = true;
-            return;
-        }
-    });
-    return crsSet ? crs.cell : <td />;
+    let course = classData.filter(
+        (crs) => crs.start === time && crs.days.includes(day)
+    );
+    return course.length > 0 ? course[0].cell : <td />;
 }
