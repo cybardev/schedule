@@ -4,12 +4,10 @@ import { getActiveWeekdays, getTimeSlots, getCourseCell } from "./functions";
 export function HeaderRow() {
     const row = getActiveWeekdays().map((day) => <th>{day}</th>);
     return (
-        <thead>
-            <tr>
-                <th />
-                {row}
-            </tr>
-        </thead>
+        <tr>
+            <th />
+            {row}
+        </tr>
     );
 }
 
@@ -38,7 +36,9 @@ export function Schedule() {
     const rows = getTimeSlots().map((slot) => <BodyRow startTime={slot} />);
     return (
         <table>
-            <HeaderRow />
+            <thead>
+                <HeaderRow />
+            </thead>
             <tbody>{rows}</tbody>
         </table>
     );
