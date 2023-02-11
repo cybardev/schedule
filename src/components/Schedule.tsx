@@ -12,11 +12,12 @@ export function HeaderRow() {
 }
 
 export function BodyRow({ startTime }: { startTime: string }) {
-	const days: string[] = getActiveWeekdays();
 	const endTime: string = new Date(
 		Date.parse(`1970/01/01 ${startTime}`) + CLASS_DURATION * 60000,
 	).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-	const dataCells = days.map((day) => getCourseCell(startTime, day));
+	const dataCells = getActiveWeekdays().map((day) =>
+		getCourseCell(startTime, day),
+	);
 	return (
 		<tr>
 			<th>
