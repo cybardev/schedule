@@ -10,4 +10,16 @@ export class Course {
         this.days = days;
         this.location = location;
     }
+
+    get cell() {
+        return (
+            <td>
+                <p>
+                    {this.name}
+                    <br />
+                    {this.location}
+                </p>
+            </td>
+        );
+    }
 }

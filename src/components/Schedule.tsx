@@ -1,36 +1,15 @@
-import { Course } from "./Course";
-import { classData, CLASS_DURATION } from "./Data";
-import { getActiveWeekdays, getTimeSlots } from "./functions";
+import { CLASS_DURATION } from "./Data";
+import { getActiveWeekdays, getTimeSlots, getCourse } from "./functions";
 
 export function HeaderRow() {
     const row = getActiveWeekdays().map((day) => <th>{day}</th>);
     return (
-        <tr>
-            <th />
-            {row}
-        </tr>
-    );
-}
-
-function Cell({
-    course,
-    time,
-    day,
-}: {
-    course: Course;
-    time: string;
-    day: string;
-}) {
-    return course.start === time && course.days.includes(day) ? (
-        <td>
-            <p>
-                {course.name}
-                <br />
-                {course.location}
-            </p>
-        </td>
-    ) : (
-        <td />
+        <thead>
+            <tr>
+                <th />
+                {row}
+            </tr>
+        </thead>
     );
 }
 
@@ -42,19 +21,8 @@ export function BodyRow({ startTime }: { startTime: string }) {
     const dataCells: JSX.Element[] = [];
     // TODO: fix logic
     days.forEach((day) => {
-        classData.forEach((course) => {
-            dataCells.push(<Cell course={course} time={startTime} day={day} />);
-        });
+        dataCells.push(getCourse(startTime, day));
     });
-    // classData.forEach((course, index) => {
-    //     dataCells.push(
-    //         <Cell
-    //             course={course}
-    //             time={startTime}
-    //             day={days[dataCells.length]}
-    //         />
-    //     );
-    // });
     return (
         <tr>
             <th>
@@ -72,7 +40,7 @@ export function Schedule() {
     return (
         <table>
             <HeaderRow />
-            {rows}
+            <tbody>{rows}</tbody>
         </table>
     );
 }
