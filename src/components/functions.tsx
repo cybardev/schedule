@@ -46,7 +46,7 @@ export function getActiveWeekdays() {
     return activeWeekdays;
 }
 
-export function getCourse(time: string, day: string) {
+export function getCourseCell(time: string, day: string) {
     let crsSet: boolean = false;
     let crs: Course = new Course("", "", [""], "");
     classData.forEach((course) => {
@@ -56,5 +56,5 @@ export function getCourse(time: string, day: string) {
             return;
         }
     });
-    return crsSet ? crs.cell : <td></td>;
+    return crsSet ? crs.cell : <td />;
 }
