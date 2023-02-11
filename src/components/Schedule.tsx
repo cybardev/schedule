@@ -1,5 +1,5 @@
 import { CLASS_DURATION } from "./Data";
-import { getActiveWeekdays, getTimeSlots, getCourseCell } from "./FunctionsX";
+import { getActiveWeekdays, getTimeSlots, getCourseCell } from "./Functions";
 
 export function HeaderRow() {
 	const row = getActiveWeekdays().map((day) => <th>{day}</th>);
